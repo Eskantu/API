@@ -1,0 +1,33 @@
+{
+    "configurations": [
+        //Change configuration to watch instead of launch
+        {
+            "type": "coreclr",
+            "request": "launch",
+            // "launchBrowser": {
+            //     "enabled": true
+            // },
+            "serverReadyAction": {
+                "action": "openExternally",
+                "pattern": "\\bNow listening on:\\s+(https?://\\S+)",
+                 "uriFormat": "http://localhost:%s/swagger/index.html"
+            },
+             "preLaunchTask": "dotnet: build",
+             "postDebugTask": "dotnet: clean",
+            "name": "Launch .NET Core API",
+            "program": "${workspaceFolder}/API/bin/Debug/net8.0/${input:programName}.dll",
+            "args": [],
+            "cwd": "${workspaceFolder}/API",
+            "stopAtEntry": false,
+            "console": "internalConsole"
+            
+        }
+    ],
+    "inputs": [
+        {
+            "type": "promptString",
+            "id": "programName",
+            "description": "Name of the program to launch"
+        }
+    ]
+}
